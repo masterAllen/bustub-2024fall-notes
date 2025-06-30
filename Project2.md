@@ -33,7 +33,9 @@ for fname in os.listdir(datadir):
         os.system(f"rm {os.path.join(datadir, fname)}")
 ```
 
-很简单，但最后生成 png 图片之后，方便程度立马提高许多。如果节点多的话，那就老老实实生成 svg，在浏览器中打开吧。
+很简单，但最后生成 png 图片之后，方便程度立马提高许多，如下图所示，可以直接在 Vscode 分屏对比前后。如果节点多的话，那就老老实实生成 svg，在浏览器中打开吧。
+
+![test](./images/Project2_01.png)
 
 ### 循环时需要保存 PageGuard
 
@@ -176,3 +178,7 @@ t1必须在4进行的时候对B加锁，直到B完成。
 ### 调试注意点
 
 每次改完，记得把单线程的调试先跑一下，成功之后再去跑多线程...
+
+## 参考资料
+1. https://zhuanlan.zhihu.com/p/618912295
+2. https://www.cnblogs.com/wangzming/p/17647325.html
