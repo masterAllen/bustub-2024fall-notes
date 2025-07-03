@@ -147,7 +147,7 @@ auto ClockNs() -> uint64_t {
 
 ### 灵光一闪的解决
 
-已经是晚上十一点半了，就要睡觉了，就要放弃了。突然，脑子里蹦出一个想法：承接上面的第四条，请求 HeaderPage 的写锁很长，因为读锁很多？那我试一下把 GetValue 的线程都禁掉看看？果然提高了一些。再看 GetValue 的代码，终于逮到你了：读锁没有及时的释放！！
+已经是晚上十一点半了，就要睡觉了，就要放弃了。突然，脑子里蹦出一个想法：承接上面的 8.4，请求 HeaderPage 的写锁很长，因为读锁很多？那我试一下把 GetValue 的线程都禁掉看看？果然提高了一些。再看 GetValue 的代码，终于逮到你了：读锁没有及时的释放！！
 
 ```cpp
 auto BPLUSTREE_TYPE::GetValue(const KeyType &key, std::vector<ValueType> *result) -> bool {
