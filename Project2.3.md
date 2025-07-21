@@ -55,7 +55,9 @@ auto BPLUSTREE_TYPE::InsertOptimistic(const KeyType &key, const ValueType &value
 
 实际还是有可能出错... 只不过概率比较低：
 > 为了简单化，我们就假设现在 Root 就是叶子节点，其 `max_size = 3`，现在节点上为 [1|2|3]
-> 1. 线程一想要 Remove(5)，乐观锁让它找到叶子节点，正打算 WritePage() 时，线程终止
+> 1. 线程一想要 Remove(3)，乐观锁让它找到叶子节点，正打算 WritePage() 时，线程终止
 > 2. 此时线程二 Insert(4)，此时树的情况是这样的：[1|2]⬅[3]➡[3|4]
 > 3. 也就是说，以前的 RootPage 现在已经分裂了，其内容是 [1|2]
 > 4. 线程一开始执行，Remove(3) 失败....
+
+之所以没有出错，是因为检测代码中，Remove 的频率比较低，所以基本很少出现 Remove 和 Insert 产生并发的情况。
