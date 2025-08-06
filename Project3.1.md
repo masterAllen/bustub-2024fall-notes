@@ -241,3 +241,6 @@ Project3 巨爽的一点是直接可以本地检查全部条件，参考官网�
 make -j$(nproc) sqllogictest
 ./bin/bustub-sqllogictest ../test/sql/p3.00-primer.slt --verbose
 ```
+
+## 特别致谢
+感谢本文的博主，让我无从下笔的时候能有参考：https://blog.csdn.net/qq_40878302/article/details/137741785

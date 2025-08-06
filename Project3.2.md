@@ -109,3 +109,6 @@ while (true) {
 上面的代码现在我回头看，确实简单，但当时还是花了好长时间去思考怎么构建新的 Tuple，有一个关键是知道 Schema 是什么，还是问 AI，[回答的很好](./references/003.md)。而且我觉得多使用 ToString 打印，很有帮助！
 
 实现了 Update 之后，Delete 那就太简单了。这里就不写了。
+
+## 特别致谢
+感谢本文的博主，让我无从下笔的时候能有参考：https://blog.csdn.net/qq_40878302/article/details/137741785
