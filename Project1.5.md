@@ -46,9 +46,9 @@ std::mutex page_latch_mutex_;
 
 答案是 Page1 要先加锁。是想如果 Page2 加锁，然后进行 `WriteFrameToDisk(page2)`：
 
-1. 请明确我们 Write 的时候现在是没有 bpm 锁的，不然改成一页一页的锁也没有意义了
-2. 也就是此时 Write，我们只有 Page2 的锁，这个线程目前在慢慢写，岁月静好
-3. 外面已经满天飞了，因为只要处理其他 page，都不受到影响，想想看是不是很可怕
+1. 请明确我们 WriteFrameToDisk 的时候现在是没有 bpm 锁的，不然改成一页一页的锁也没有意义了
+2. 也就是此时 WriteFrameToDisk，我们只有 Page2 的锁，这个线程目前在慢慢写，岁月静好
+3. 外面已经满天飞了，因为只要不是涉及到处理 Page2，都不会卡住，想想看是不是很可怕，我们还有一个 Page1 想要保护呢
 4. 就比如跑了好多个线程，现在已经有 Free Frame 了，这时 OtherThread 申请了 Page1，放到某个 Frame 中
 5. 我们的线程终于跑完 `Write(page2)`，现在再 `Read(page1)`，Oops，一个 Page 映射有两个 Frame 了
 
