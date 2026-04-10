@@ -1,7 +1,10 @@
 # CMU-15455 Notes
 
 Course Name: Intro to Database Systems
+
 Course Time: Fall 2024
+
+Progress:
 
 - [x] Project 0: C++ Primer
 - [x] Project 1: Buffer Pool Manager
